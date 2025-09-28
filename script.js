@@ -43,3 +43,6 @@ cepInput.addEventListener('input', (event) => {
     event.target.value = value;
 });
 
+ufInput.addEventListener('input', (event) => {
+    event.target.value = event.target.value.toUpperCase();
+});
