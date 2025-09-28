@@ -7,27 +7,43 @@ const ufInput = document.getElementById('uf');
 form.addEventListener('submit', (event) => {
     event.preventDefault();
 
+    if (cepInput.value.trim() === '') {
+        alert('O campo do CEP é obrigatório.');
+        return;
+    }
     const cepRegex = /^\d{5}-\d{3}$/;
     if (!cepRegex.test(cepInput.value)) {
         alert('CEP inválido. O formato deve ser 00000-000.');
-        return;
+        return; 
     }
 
+    if (logradouroInput.value.trim() === '') {
+        alert('O campo Logradouro é obrigatório.');
+        return;
+    }
     if (logradouroInput.value.trim().length < 5) {
-        alert('Logradouro é obrigatório e deve ter no mínimo 5 caracteres.');
-        return;
+        alert('Logradouro deve ter no mínimo 5 caracteres.');
+        return; 
     }
 
+    if (numeroInput.value.trim() === '') {
+        alert('O campo Número é obrigatório.');
+        return; 
+    }
     const numeroRegex = /^\d+$/;
     if (!numeroRegex.test(numeroInput.value)) {
-        alert('O campo Número é obrigatório e deve conter apenas dígitos.');
-        return;
+        alert('O campo Número deve conter apenas dígitos.');
+        return; 
     }
 
+    if (ufInput.value.trim() === '') {
+        alert('O campo UF é obrigatório.');
+        return; 
+    }
     const ufRegex = /^[A-Z]{2}$/;
     if (!ufRegex.test(ufInput.value)) {
         alert('UF inválida. Deve conter exatamente 2 letras maiúsculas.');
-        return;
+        return; 
     }
 
     alert('Endereço cadastrado com sucesso');
