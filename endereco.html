@@ -7,5 +7,23 @@
 </head>
 <body>
     <h1>Formulário de Endereço Inteligente</h1>
+    <form id="form-endereco" novalidate>
+        <label for="cep">CEP</label><br>
+        <input type="text" id="cep" name="cep" placeholder="00000-000" maxlength="9" required>
+        <br><br>
+        <label for="logradouro">Logradouro</label><br>
+        <input type="text" id="logradouro" name="logradouro" required>
+        <br><br>
+        <label for="numero">Número</label><br>
+        <input type="text" id="numero" name="numero" required>
+        <br><br>
+        <label for="uf">UF</label><br>
+        <input type="text" id="uf" name="uf" placeholder="SP" maxlength="2" required>
+        <br><br>
+        <label for="complemento">Complemento</label><br>
+        <input type="text" id="complemento" name="complemento">
+        <br><br>
+        <button type="submit">Cadastrar</button>
+    </form>
 </body>
 </html>
