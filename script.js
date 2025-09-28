@@ -35,3 +35,11 @@ form.addEventListener('submit', (event) => {
     form.reset();
 });
 
+cepInput.addEventListener('input', (event) => {
+    let value = event.target.value.replace(/\D/g, '');
+
+    value = value.replace(/^(\d{5})(\d+)/, '$1-$2');
+
+    event.target.value = value;
+});
+
