@@ -101,3 +101,9 @@ cepInput.addEventListener('blur', async () => {
     }
 });
 
+function limparCamposEndereco() {
+    logradouroInput.value = '';
+    bairroInput.value = '';
+    cidadeInput.value = '';
+    ufInput.value = '';
+}
