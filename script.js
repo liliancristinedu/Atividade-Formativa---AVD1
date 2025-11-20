@@ -23,8 +23,8 @@ form.addEventListener('submit', (event) => {
         alert('O campo Logradouro é obrigatório.');
         return;
     }
-    if (logradouroInput.value.trim().length < 5) {
-        alert('Logradouro deve ter no mínimo 5 caracteres.');
+    if (logradouroInput.value.trim().length < 3) {
+        alert('Logradouro deve ter no mínimo 3 caracteres.');
         return; 
     }
 
@@ -64,3 +64,40 @@ cepInput.addEventListener('input', (event) => {
 ufInput.addEventListener('input', (event) => {
     event.target.value = event.target.value.toUpperCase();
 });
+
+cepInput.addEventListener('blur', async () => {
+    const cep = cepInput.value.replace(/\D/g, '');
+
+    if (cep.length === 8) {
+        try {
+            const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+            
+            if (!response.ok) {
+                throw new Error('Erro na conexão com a API');
+            }
+
+            const data = await response.json();
+
+            if (data.erro) {
+                alert('CEP não encontrado na base de dados.');
+                limparCamposEndereco();
+                return;
+            }
+
+            logradouroInput.value = data.logradouro;
+            bairroInput.value = data.bairro;
+            cidadeInput.value = data.localidade;
+            ufInput.value = data.uf;
+
+            numeroInput.focus();
+        }
+
+        catch (error) {
+            console.error('Erro:', error);
+            alert('Não foi possível buscar o endereço. Verifique sua conexão.');
+        }
+    }   else if (cepInput.value !== '') {
+        alert('Formato de CEP inválido.');
+    }
+});
+
