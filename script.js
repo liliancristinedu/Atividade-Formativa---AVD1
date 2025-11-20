@@ -1,8 +1,10 @@
 const form = document.getElementById('form-endereco');
 const cepInput = document.getElementById('cep');
 const logradouroInput = document.getElementById('logradouro');
-const numeroInput = document.getElementById('numero');
+const bairroInput = document.getElementById('bairro');
+const cidadeInput = document.getElementById('cidade');
 const ufInput = document.getElementById('uf');
+const numeroInput = document.getElementById('numero');
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
